@@ -1,0 +1,19 @@
+<h2> <%= link_to post.title, post %> </h2>
+
+<% if current_user.try(:admin?) %>
+    <div class="btn-group pull-right" role="group" aria-label="...">
+      <%= link_to 'Edit post', edit_post_path(post), class: "btn btn-default", role: "button" %>
+      <%= link_to 'Delete post', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default", role: "button" %>
+    </div>
+<% end %>
+
+<span class="glyphicon glyphicon-user" aria-hidden="true"></span>  <%= post.user.name %><br>
+<span class="glyphicon glyphicon-time"></span>  Posted on <%= post.created_at.strftime("%B %d, %Y at %H:%M") %>
+
+<hr>
+<% if trunk %>
+  <p><%= truncate post.body, length: 920 %></p>
+    <% else %>
+  <p><%= post.body %></p>
+<% end %>
+<hr>

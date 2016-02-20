@@ -1,5 +1,5 @@
  <div class="media-body">
-        <h4 class="media-heading"><%= comment.user.try(:email) %>
+        <h4 class="media-heading"><span class="glyphicon glyphicon-comment"></span> <%= comment.user.try(:name) %>
           <% if current_user.try(:admin?) || (comment.user == current_user && !current_user.nil?) %>
               <%= link_to 'Delete comment', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn pull-right", role: "button" %>
           <% end %>
