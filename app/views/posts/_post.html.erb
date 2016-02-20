@@ -12,8 +12,8 @@
 
 <hr>
 <% if trunk %>
-  <p><%= truncate post.body, length: 920 %></p>
+  <p class="text-justify"><%= truncate post.body, length: 920 %></p>
     <% else %>
-  <p><%= post.body %></p>
+  <p class="text-justify"><%= post.body %></p>
 <% end %>
 <hr>

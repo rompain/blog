@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+30.times do
+  post  = Post.create(title: Faker::Lorem.sentence(5), body: Faker::Lorem.paragraph(50), user_id: 3 )
+
+  tag = Tag.create(name: Faker::Lorem.word)
+
+  post_tag = PostTag.create(post: post, tag: tag)
+end
