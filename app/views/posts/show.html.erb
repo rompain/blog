@@ -44,8 +44,7 @@
       <%= form_for([@post, @post.comments.build]) do |f| %>
           <form role="form">
             <div class="form-group">
-              <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
-              <%= f.text_area :body, class: "form-control", rows:"2", placeholder: "Comment"%>
+              <%= f.text_area :body, class: "form-control", rows:"2"%>
             </div>
             <%= f.submit type: "submit", class: "btn btn-default"%>
           </form>
