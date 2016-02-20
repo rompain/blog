@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -27,8 +27,11 @@
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        
+
         <% if user_signed_in? %>
+            <% if  current_user.admin? %>
+                <li><%= link_to "New post", new_post_path %></li>
+            <% end %>
         <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         <% else %>
         <li><a href="/users/sign_up">Sign Up</a></li>
@@ -48,7 +51,6 @@
           </div>
         </li>
         <% end %>
-
       </ul>
 
     </div><!-- /.navbar-collapse -->

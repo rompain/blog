@@ -15,9 +15,13 @@
 
     <hr>
 
-    <!-- Date/Time -->
     <p><span class="glyphicon glyphicon-time"></span> Posted on <%= @post.created_at.strftime("%B %d, %Y at %H:%M") %></p>
-    <%= link_to 'Edit', edit_post_path(@post) %>
+    <% if current_user.try(:admin?) %>
+        <div class="btn-group" role="group" aria-label="...">
+          <%= link_to 'Edit post', edit_post_path(@post), class: "btn btn-default", role: "button" %>
+          <%= link_to 'Delete post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default", role: "button" %>
+        </div>
+    <% end %>
 
     <hr>
 
@@ -50,9 +54,8 @@
 
   </div>
 
-  <%= render 'layouts/sidebar' %>
+  <%= render 'shared/sidebar' %>
 
 </div>
 <!-- /.row -->
-<%= link_to 'Back', posts_path %>
 
